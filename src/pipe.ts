@@ -16,18 +16,7 @@ const copy = <T>(input: T): T => {
   )
 }
 
-export const pipe = <T>(value: T, ...fns: PipeCallback[]) =>
+const pipe = <T>(value: T, ...fns: PipeCallback[]) =>
   fns.reduce((output, fn) => fn(copy<T>(output)), value)
 
-console.log(
-  pipe(
-    10,
-    (n: number) => n / 2,
-    (n: number) => n * n,
-    (n: number) => n + 15
-  )
-)
-
-const typesCopy = copy(nativeTypes)
-
-console.log(nativeTypes, typesCopy, nativeTypes === typesCopy)
+export default pipe

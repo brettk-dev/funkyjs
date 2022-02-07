@@ -1,14 +1,19 @@
 {
-  "name": "funkyjs",
+  "name": "@brettk-dev/funky",
   "version": "0.0.1",
   "description": "My own functional library.",
-  "main": "src/main.ts",
+  "main": "dist/main.js",
   "scripts": {
+    "build": "tsc",
     "test": "jest"
   },
   "keywords": [],
-  "author": "Brett Kinnamon <me@brettk.dev>",
+  "author": "Brett Kinnamon <me@brettk.dev> (https://brettk.dev/)",
   "license": "unlicense",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brettk-dev/funky"
+  },
   "devDependencies": {
     "@babel/core": "^7.16.10",
     "@babel/preset-env": "^7.16.10",
