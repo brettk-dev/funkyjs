@@ -4,7 +4,7 @@ This is my personal pet project created for the fun of it.
 
 ## Features:
 
-### `chain`
+### `chain` _(deprecated in favor of [pipe](#pipe))_
 
 Allows a value to be chained through multiple functions.
 

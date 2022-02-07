@@ -1,6 +1,6 @@
 {
   "name": "@brettk-dev/funky",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "My own functional library.",
   "main": "dist/main.js",
   "scripts": {
