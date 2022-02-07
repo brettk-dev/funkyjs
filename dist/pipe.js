@@ -1,12 +1,8 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const nativeTypes = ['number', 'bigint', 'string', 'boolean', 'undefined'];
-const copy = (input) => {
-    if (input === null || nativeTypes.includes(typeof input))
-        return input;
-    if (Array.isArray(input))
-        return input.reduce((a, v) => [...a, copy(v)], []);
-    return Object.entries(input).reduce((obj, [k, v]) => (Object.assign(Object.assign({}, obj), { [k]: copy(v) })), input);
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-const pipe = (value, ...fns) => fns.reduce((output, fn) => fn(copy(output)), value);
+Object.defineProperty(exports, "__esModule", { value: true });
+const copy_1 = __importDefault(require("./copy"));
+const pipe = (value, ...fns) => fns.reduce((output, fn) => fn((0, copy_1.default)(output)), value);
 exports.default = pipe;
