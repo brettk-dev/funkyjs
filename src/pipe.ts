@@ -1,8 +1,8 @@
 import copy from './copy'
 
-type PipeCallback = (...args: any[]) => any
+type PipeCallback = (...args: unknown[]) => unknown
 
-const pipe = <T>(value: T, ...fns: PipeCallback[]) =>
-  fns.reduce((output, fn) => fn(copy<T>(output)), value)
+const pipe = (value: unknown, ...fns: PipeCallback[]) =>
+  fns.reduce((output, fn) => fn(copy(output)), value)
 
 export default pipe

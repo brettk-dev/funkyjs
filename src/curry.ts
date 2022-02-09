@@ -1,9 +1,10 @@
-type CurryFunction = (...args: any[]) => any
-const curry = (fn: CurryFunction, args: any[] = []) =>
+type CurryFunction = (...args: unknown[]) => unknown
+
+const curry = (fn: CurryFunction, args: unknown[] = []) =>
   fn.length === 0
     ? () => fn()
     : args.length === fn.length
     ? fn(...args)
-    : (arg: any) => curry(fn, [...args, arg])
+    : (arg: unknown) => curry(fn, [...args, arg])
 
 export default curry

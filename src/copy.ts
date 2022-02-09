@@ -1,17 +1,24 @@
-const nativeTypes = ['number', 'bigint', 'string', 'boolean', 'undefined']
+const copyArray = <T extends U[], U>(arr: T): T => {
+  if (!Array.isArray(arr))
+    throw new Error('The parameter needs to be an array.')
+  return arr.map((v) => copy(v)) as T
+}
 
-const copy = <T>(input: T): T => {
-  if (input === null || nativeTypes.includes(typeof input)) return input
-
-  if (Array.isArray(input)) return input.reduce((a, v) => [...a, copy(v)], [])
-
-  return Object.entries(input).reduce<T>(
-    (obj, [k, v]) => ({
-      ...obj,
+const copyObject = <T extends { [key: string]: U }, U>(obj: T): T =>
+  Object.entries(obj).reduce<{ [key: string]: U }>(
+    (o, [k, v]) => ({
+      ...o,
       [k]: copy(v),
     }),
-    input
-  )
+    {}
+  ) as T
+
+const copy = <T>(input: T): T => {
+  if (input === null || typeof input !== 'object') return input
+
+  if (Array.isArray(input)) return copyArray(input)
+
+  return copyObject(input as T & { [key: string]: unknown })
 }
 
 export default copy
